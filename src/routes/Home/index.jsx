@@ -1,9 +1,8 @@
-import Nav from "../../components/Nav";
 
 export default function Home() {
 	return (
 		<section className="home">
-			<Nav />
+			<h1>Home page</h1>
 		</section>
 	)
 }

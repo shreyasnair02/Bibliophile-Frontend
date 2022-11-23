@@ -1,0 +1,3 @@
+[submodule "src/tokens"]
+	path = src/tokens
+	url = https://github.com/Vikram-Hegde/design-tokens

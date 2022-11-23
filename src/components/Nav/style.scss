@@ -1,0 +1,10 @@
+.nav {
+	display: flex;
+	font-size: var(--fs-200);
+
+	&__list {
+		display: inherit;
+		list-style: none;
+		padding-inline-start: 0;
+	}
+}

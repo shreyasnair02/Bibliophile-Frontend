@@ -1,0 +1,23 @@
+$colors: ();
+// if only using custom colors don't forget to define your root with variables.
+
+/// config for auto generation.
+$color-config: (
+	base: hsl(34 50% 50%),
+	auto-generate: true,
+	stepShades: 20%,
+	stepText: 5%,
+	numberOfSurfaceShades: 4,
+	numberOfTextShades: 2,
+	cascadingColors: false,
+);
+
+///custom font size for specific/new weights
+$font-sizes: ();
+
+/// config for types
+$font-config: (
+	base: 0.75rem,
+	steps: 5,
+	type-ratio: majorThird,
+);
