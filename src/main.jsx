@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Bookshelf from './routes/Bookshelf'
 import Error from './routes/Error'
 import Home from './routes/Home'
+import Login from './routes/Login'
 import Root from './routes/Root'
 
 const router = createBrowserRouter([
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
 				path: 'bookshelf',
 				element: <Bookshelf />,
 			},
+			{
+				path: 'login',
+				element: <Login />
+			}
 		],
 	},
 ])

@@ -1,5 +1,7 @@
 export default function Bookshelf() {
 	return (
-		<h1>Bookshelf page</h1>
+		<section className="bookshelf">
+			<h1>Bookshelf Page</h1>
+		</section>
 	)
 }

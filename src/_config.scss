@@ -1,4 +1,15 @@
-$colors: ();
+$colors: (
+	light: (
+		'purple': (
+			100: 289 24% 54%,
+		),
+	),
+	dark: (
+		'purple': (
+			100: 289 20% 70%,
+		),
+	),
+);
 // if only using custom colors don't forget to define your root with variables.
 
 /// config for auto generation.
@@ -17,7 +28,7 @@ $font-sizes: ();
 
 /// config for types
 $font-config: (
-	base: 0.75rem,
+	base: 0.70rem,
 	steps: 5,
 	type-ratio: majorThird,
 );

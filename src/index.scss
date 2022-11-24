@@ -1,6 +1,17 @@
 @use 'tokens/base' as *;
 
-body {
+#root {
 	display: grid;
-	grid-template-columns: repeat(12, 1fr);
+	grid-template-columns: repeat(12, minmax(0, 1fr));
+
+	> * {
+		display: grid;
+		grid-template-columns: inherit;
+		grid-column: var(--col, 1 / -1);
+
+		> * {
+			grid-column: var(--col, 2 / -2);
+			grid-row-start: var(--row-start, 1);
+		}
+	}
 }
