@@ -11,7 +11,7 @@
 
 		> * {
 			grid-column: var(--col, 2 / -2);
-			grid-row-start: var(--row-start, 1);
+			grid-row-start: var(--row-start, auto);
 		}
 	}
 }
