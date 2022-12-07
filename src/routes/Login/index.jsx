@@ -1,6 +1,7 @@
 import './style.scss'
 import useAuth from '../../hooks/useAuth'
 import { useNavigate } from 'react-router-dom'
+import PageWrapper from '../../utils/PageWrapper'
 
 export default function Login() {
 	const [userAuth, setUserAuth] = useAuth()
@@ -13,12 +14,12 @@ export default function Login() {
 	}
 
 	return (
-		<section className="login">
+		<PageWrapper className="login">
 			<h1>Login Page</h1>
 			<form onSubmit={handleSubmit}>
 				<input type="text" name="inputName" />
 				<button type="submit">Submit</button>
 			</form>
-		</section>
+		</PageWrapper>
 	)
 }

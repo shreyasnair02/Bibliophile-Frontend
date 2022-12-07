@@ -1,7 +1,8 @@
+import PageWrapper from '../../utils/PageWrapper'
 export default function Bookshelf() {
 	return (
-		<section className="bookshelf">
+		<PageWrapper className="bookshelf">
 			<h1>Bookshelf Page</h1>
-		</section>
+		</PageWrapper>
 	)
 }
