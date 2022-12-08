@@ -30,10 +30,12 @@ export default function Nav() {
 			</div>
 			<NavList navItems={navItems} />
 			<div className="nav__btn-group">
-				<button className="nav__btn nav__link nav__action">
-					<IconBuildingStore size={22} color="currentColor" />
-					Sell Books
-				</button>
+				<NavLink to="/sellbook">
+					<button className="nav__btn nav__link nav__action">
+						<IconBuildingStore size={22} color="currentColor" />
+						Sell Books
+					</button>
+				</NavLink>
 				<NavLink to="/login" className="nav__btn">
 					<IconLogin size={24} color="currentColor" />
 				</NavLink>
@@ -50,7 +52,8 @@ function NavList({ navItems }) {
 					<NavLink
 						to={navItem.to}
 						className={({ isActive }) =>
-							isActive ? 'nav__link nav__link--active' : 'nav__link'}
+							isActive ? 'nav__link nav__link--active' : 'nav__link'
+						}
 					>
 						{navItem.icon} {navItem.text}
 					</NavLink>

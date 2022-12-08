@@ -6,6 +6,7 @@ import Error from './routes/Error'
 import Home from './routes/Home'
 import Login from './routes/Login'
 import Root from './routes/Root'
+import Sellbook from './routes/Sellbook'
 
 const router = createBrowserRouter([
 	{
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
 			{
 				path: 'login',
 				element: <Login />
+			},
+			{
+				path: 'sellbook',
+				element: <Sellbook />
 			}
 		],
 	},
