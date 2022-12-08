@@ -9,7 +9,8 @@
 	gap: var(--gap);
 
 	&__logo {
-		--col: 2 / 2;
+		--col: 2;
+		justify-self: start;
 	}
 
 	&__list {
@@ -25,6 +26,10 @@
 		align-items: center;
 		gap: calc(var(--gap) / 4);
 		color: var(--text--100);
+
+		&--active {
+			color: hsl(34 98% 48%);
+		}
 	}
 
 	&__btn-group {

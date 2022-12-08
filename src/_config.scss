@@ -18,9 +18,10 @@ $color-config: (
 	auto-generate: true,
 	stepShades: 20%,
 	stepText: 5%,
-	numberOfSurfaceShades: 4,
+	numberOfSurfaceShades: 5,
 	numberOfTextShades: 2,
 	cascadingColors: false,
+	darkMode: false
 );
 
 ///custom font size for specific/new weights
