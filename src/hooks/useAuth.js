@@ -5,12 +5,20 @@ export default function useAuth() {
 	const authInfo = {
 		isAuthenticated: auth,
 		signin(callback) {
-			setAuth(true)
-			setTimeout(callback, 200)
+			return new Promise((resolve) => {
+				setAuth(true)
+				setTimeout(() => {
+					callback
+					resolve()
+				}, 1000)
+			})
 		},
 		signout(callback) {
-			setAuth(false)
-			setTimeout(callback, 200)
+			return new Promise((resolve) => {
+				setAuth(false)
+				callback
+				resolve()
+			})
 		},
 	}
 	return [
