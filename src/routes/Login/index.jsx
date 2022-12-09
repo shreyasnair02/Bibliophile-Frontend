@@ -8,7 +8,7 @@ import Loading from '../../components/Loading'
 export default function Login() {
 	const [_, setUserAuth] = useAuth()
 	const navigate = useNavigate()
-	const [loading, setLoading] = useState()
+	const [loading, setLoading] = useState(false)
 
 	const handleSubmit = async (e) => {
 		e.preventDefault()
