@@ -1,9 +1,10 @@
 import PageWrapper from '../../utils/PageWrapper'
-
+import { HomePage } from './Homepage/HomePage'
+import './style.scss'
 export default function Home() {
 	return (
-		<PageWrapper className={'home'}>
-			<h1>Home Page</h1>
+		<PageWrapper className="home">
+			<HomePage></HomePage>
 		</PageWrapper>
 	)
 }
