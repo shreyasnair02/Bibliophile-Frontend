@@ -1,5 +1,7 @@
 import React from 'react'
+import heroImg from '../../../assets/hero-img.png'
 import './style.scss'
+
 export const HomePage = () => {
 	return (
 		<div className="home__container">
@@ -10,11 +12,7 @@ export const HomePage = () => {
 				<h2> Find and sell used books at lowest rates.</h2>
 			</div>
 			<div className="home__container__hero__container">
-				<img
-					src="/src/assets/hero-img.png"
-					alt="Bibliophilia"
-					className="hero__img"
-				/>
+				<img src={heroImg} alt="Bibliophilia" className="hero__img" />
 			</div>
 		</div>
 	)
