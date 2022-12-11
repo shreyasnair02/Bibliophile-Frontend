@@ -7,7 +7,7 @@ export const HomePage = () => {
 		<div className="home__container">
 			<div className="home__container__welcome">
 				<h3>paradise for book lovers</h3>
-				<h1>Bibiliophile</h1>
+				<h1>Bibliophile</h1>
 				<h2>Sharing knowledge has never been easier</h2>
 				<h2> Find and sell used books at lowest rates.</h2>
 			</div>
