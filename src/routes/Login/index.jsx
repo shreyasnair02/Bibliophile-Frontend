@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import PageWrapper from '../../utils/PageWrapper'
 import { useState } from 'react'
 import Loading from '../../components/Loading'
+import Input from '../../components/Input'
 
 export default function Login() {
 	const [_, setUserAuth] = useAuth()
@@ -19,12 +20,13 @@ export default function Login() {
 	}
 
 	return (
-		<PageWrapper className="login">
+		<PageWrapper className="login page">
 			{loading && <Loading />}
-			<h1>Login Page</h1>
+			<h1>Sign In</h1>
 			<form onSubmit={handleSubmit}>
-				<input type="text" name="inputName" />
-				<button type="submit">Submit</button>
+				<Input type="email" name="email" placeholder="someone@gmail.com" />
+				<Input type="password" name="password" placeholder="********" />
+				<button>submit karo idhar</button>
 			</form>
 		</PageWrapper>
 	)

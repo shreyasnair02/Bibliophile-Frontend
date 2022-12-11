@@ -8,16 +8,14 @@ export default function useAuth() {
 			return new Promise((resolve) => {
 				setAuth(true)
 				setTimeout(() => {
-					callback
-					resolve()
+					resolve(callback)
 				}, 1000)
 			})
 		},
 		signout(callback) {
 			return new Promise((resolve) => {
 				setAuth(false)
-				callback
-				resolve()
+				resolve(callback)
 			})
 		},
 	}

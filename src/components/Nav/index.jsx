@@ -36,7 +36,12 @@ export default function Nav() {
 						Sell Books
 					</button>
 				</NavLink>
-				<NavLink to="/login" className="nav__btn">
+				<NavLink
+					to="/login"
+					className={({ isActive }) =>
+						isActive ? 'nav__btn active' : 'nav__btn'
+					}
+				>
 					<IconLogin size={24} color="currentColor" />
 				</NavLink>
 			</div>
