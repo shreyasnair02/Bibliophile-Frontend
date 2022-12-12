@@ -37,6 +37,7 @@
 		align-items: center;
 		display: flex;
 		gap: var(--gap);
+		justify-content: end;
 	}
 
 	&__btn {

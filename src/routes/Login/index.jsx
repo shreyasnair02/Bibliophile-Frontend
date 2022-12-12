@@ -5,6 +5,7 @@ import PageWrapper from '../../utils/PageWrapper'
 import { useState } from 'react'
 import Loading from '../../components/Loading'
 import Input from '../../components/Input'
+import treeImg from '../../assets/book-tree.png'
 
 export default function Login() {
 	const [_, setUserAuth] = useAuth()
@@ -27,28 +28,31 @@ export default function Login() {
 	return (
 		<PageWrapper className="login page">
 			{loading && <Loading />}
-			<h1>Sign In</h1>
-			<form onSubmit={handleSubmit}>
-				<div className="field">
-					<label>Email</label>
-					<Input
-						required
-						type="email"
-						name="email"
-						placeholder="someone@gmail.com"
-					/>
-				</div>
-				<div className="field">
-					<label>Password</label>
-					<Input
-						required
-						type="password"
-						name="password"
-						placeholder="********"
-					/>
-				</div>
-				<button className="btn">Sign In</button>
-			</form>
+			<div className="content">
+				<h1>Sign In</h1>
+				<form onSubmit={handleSubmit}>
+					<div className="field">
+						<label>Email</label>
+						<Input
+							required
+							type="email"
+							name="email"
+							placeholder="someone@gmail.com"
+						/>
+					</div>
+					<div className="field">
+						<label>Password</label>
+						<Input
+							required
+							type="password"
+							name="password"
+							placeholder="********"
+						/>
+					</div>
+					<button className="btn">Sign In</button>
+				</form>
+			</div>
+			<img src={treeImg} alt="a tree of books" />
 		</PageWrapper>
 	)
 }
