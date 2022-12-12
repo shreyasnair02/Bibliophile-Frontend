@@ -13,8 +13,13 @@ export default function Login() {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault()
+		let formData = new FormData(e.target)
+		let formObj = {
+			email: formData.get('email'),
+			password: formData.get('password'),
+		}
 		setLoading(true)
-		await setUserAuth.signin()
+		await setUserAuth.signin(formObj)
 		setLoading(false)
 		navigate('/')
 	}
@@ -24,9 +29,25 @@ export default function Login() {
 			{loading && <Loading />}
 			<h1>Sign In</h1>
 			<form onSubmit={handleSubmit}>
-				<Input type="email" name="email" placeholder="someone@gmail.com" />
-				<Input type="password" name="password" placeholder="********" />
-				<button>submit karo idhar</button>
+				<div className="field">
+					<label>Email</label>
+					<Input
+						required
+						type="email"
+						name="email"
+						placeholder="someone@gmail.com"
+					/>
+				</div>
+				<div className="field">
+					<label>Password</label>
+					<Input
+						required
+						type="password"
+						name="password"
+						placeholder="********"
+					/>
+				</div>
+				<button className="btn">Sign In</button>
 			</form>
 		</PageWrapper>
 	)
