@@ -4,10 +4,15 @@
 	gap: 1.5rem;
 	color: hsl(var(--text-100));
 
+	.content {
+		display: grid;
+		gap: 1rem;
+		width: min(22rem, 100%);
+	}
+
 	form {
 		display: grid;
 		gap: 1rem;
-		width: min(20rem, 100%);
 	}
 
 	h1 {
@@ -29,5 +34,26 @@
 		letter-spacing: 1px;
 		font-size: var(--fs-100);
 		font-weight: 600;
+	}
+
+	img {
+		display: none;
+		height: calc(100vh - var(--nav-height));
+		margin: auto 0 0 auto;
+		object-fit: contain;
+		padding-top: 1rem;
+	}
+
+	@media (min-width: 1150px) {
+		img {
+			display: block;
+			--col: 6 / -2;
+		}
+
+		.content {
+			--col: 2 / 6;
+			margin: auto 0;
+			gap: 1.5rem;
+		}
 	}
 }
