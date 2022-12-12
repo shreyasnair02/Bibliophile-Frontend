@@ -3,6 +3,7 @@
 	display: flex;
 	align-items: center;
 	border-radius: 6px;
+	width: min(100%, 30rem);
 
 	&:focus-within {
 		outline: 2px solid hsl(var(--purple-100));
@@ -20,5 +21,6 @@
 		border: none;
 		outline: none;
 		line-height: 1.75;
+		width: 100%;
 	}
 }

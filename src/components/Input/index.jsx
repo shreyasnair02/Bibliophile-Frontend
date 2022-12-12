@@ -1,7 +1,7 @@
 import './style.scss'
 import { IconAt, IconLock } from '@tabler/icons'
 
-const IconProps = { size: 20, color: 'currentColor' }
+const IconProps = { size: 18, color: 'currentColor' }
 
 const InputIcon = (type) => {
 	switch (type) {
@@ -14,7 +14,14 @@ const InputIcon = (type) => {
 	}
 }
 
-export default function Input({ type, name, placeholder, value, onChange }) {
+export default function Input({
+	required,
+	type,
+	name,
+	placeholder,
+	value,
+	onChange,
+}) {
 	return (
 		<div className="input">
 			<div className="input__icon">{InputIcon(type)}</div>
@@ -24,6 +31,7 @@ export default function Input({ type, name, placeholder, value, onChange }) {
 				placeholder={placeholder}
 				value={value}
 				onChange={onChange}
+				required
 			/>
 		</div>
 	)
