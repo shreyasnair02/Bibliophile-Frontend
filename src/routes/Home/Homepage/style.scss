@@ -4,7 +4,9 @@
 	flex-wrap: wrap;
 	align-items: center;
 	height: calc(100vh - 66px);
-
+	&__sellbook {
+		display: none;
+	}
 	// background-color: red;
 	&__welcome {
 		color: hsl(var(--text-200));
@@ -16,17 +18,25 @@
 	}
 	&__welcome h3 {
 		text-transform: uppercase;
-		font-size: var(--fs-100);
+		// font-size: var(--fs-100);
+		font-size: clamp(0.75rem, 1vw, 2rem);
 		font-weight: 600;
 		color: hsl(78, 63%, 26%);
 	}
 	&__welcome h1 {
-		font-size: calc(var(--fs-500) * 3);
+		// font-size: calc(var(--fs-500) * 3);
+		font-size: clamp(4rem, 6vw, 9rem);
 		font-weight: 600;
 	}
 	&__welcome h2 {
-		font-size: var(--fs-300);
+		// font-size: var(--fs-300);
+		font-size: clamp(0.9rem, 1.3vw, 4rem);
 		font-weight: 400;
+		text-align: center;
+	}
+	&__welcome #content::after {
+		content: '\a';
+		white-space: pre;
 	}
 	&__hero__container {
 		margin-top: auto;
@@ -43,5 +53,39 @@
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
+		user-select: none;
+	}
+}
+@media only screen and (max-width: 600px) {
+	.home__container {
+		flex-direction: column-reverse;
+		justify-content: flex-end;
+		gap: 2ch;
+		&__sellbook {
+			display: block;
+		}
+		&__sellbook button {
+			gap: 1ch;
+			padding: 0.5rem 1rem;
+		}
+		&__hero__container {
+			margin-bottom: 0;
+			margin-top: 0;
+		}
+		&__hero__container img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+		&__welcome {
+			margin-top: 0;
+		}
+
+		&__welcome #content::after {
+			content: '';
+		}
+		&__hero__container img {
+			border-radius: 0 0 12px 12px;
+		}
 	}
 }
