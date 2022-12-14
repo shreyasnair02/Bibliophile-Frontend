@@ -18,19 +18,16 @@
 	}
 	&__welcome h3 {
 		text-transform: uppercase;
-		// font-size: var(--fs-100);
-		font-size: clamp(0.75rem, 1vw, 2rem);
+		font-size: clamp(0.75rem, 1vw + 0.5rem, 1rem);
 		font-weight: 600;
 		color: hsl(78, 63%, 26%);
 	}
 	&__welcome h1 {
-		// font-size: calc(var(--fs-500) * 3);
-		font-size: clamp(4rem, 6vw, 9rem);
+		font-size: clamp(4rem, 5vw + 0.5rem, 8rem);
 		font-weight: 600;
 	}
 	&__welcome h2 {
-		// font-size: var(--fs-300);
-		font-size: clamp(0.9rem, 1.3vw, 4rem);
+		font-size: clamp(0.9rem, 2vw + 0.5rem, 1.5rem);
 		font-weight: 400;
 		text-align: center;
 	}
