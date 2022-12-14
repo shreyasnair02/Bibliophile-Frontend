@@ -30,7 +30,7 @@ export default function Nav() {
 			</div>
 			<NavList navItems={navItems} />
 			<div className="nav__btn-group">
-				<NavLink to="/sellbook">
+				<NavLink to="/sellbook" tabIndex="-1">
 					<button className="nav__btn nav__link nav__action">
 						<IconBuildingStore size={22} color="currentColor" />
 						Sell Books
@@ -52,15 +52,15 @@ export default function Nav() {
 function NavList({ navItems }) {
 	return (
 		<ul className="nav__list">
-			{navItems.map((navItem, idx) => (
+			{navItems.map(({ to, icon, text }, idx) => (
 				<li key={idx}>
 					<NavLink
-						to={navItem.to}
+						to={to}
 						className={({ isActive }) =>
 							isActive ? 'nav__link nav__link--active' : 'nav__link'
 						}
 					>
-						{navItem.icon} {navItem.text}
+						{icon} {text}
 					</NavLink>
 				</li>
 			))}

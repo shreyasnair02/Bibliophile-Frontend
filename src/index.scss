@@ -20,3 +20,8 @@
 .page {
 	height: calc(100vh - var(--nav-height));
 }
+
+button:focus-visible {
+	outline: 2px solid hsl(var(--purple-100));
+	outline-offset: 2px;
+}
