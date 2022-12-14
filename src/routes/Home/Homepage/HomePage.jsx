@@ -26,6 +26,7 @@ export const HomePage = () => {
 			<div className="home__container__hero__container">
 				<picture>
 					<source srcSet={heroImg1} media="(min-width:600px)" />
+					<source srcSet={heroImg2} media="(max-width:599px)" />
 					<img src={heroImg2} alt="Bibliophilia" className="hero__img" />
 				</picture>
 			</div>
