@@ -4,11 +4,6 @@ $colors: (
 			100: 289 24% 54%,
 		),
 	),
-	dark: (
-		'purple': (
-			100: 289 20% 70%,
-		),
-	),
 );
 // if only using custom colors don't forget to define your root with variables.
 
@@ -18,10 +13,10 @@ $color-config: (
 	auto-generate: true,
 	stepShades: 20%,
 	stepText: 5%,
-	numberOfSurfaceShades: 5,
+	numberOfSurfaceShades: 4,
 	numberOfTextShades: 2,
 	cascadingColors: false,
-	darkMode: false
+	darkMode: false,
 );
 
 ///custom font size for specific/new weights
@@ -29,7 +24,7 @@ $font-sizes: ();
 
 /// config for types
 $font-config: (
-	base: 0.70rem,
+	base: 0.7rem,
 	steps: 5,
 	type-ratio: majorThird,
 );

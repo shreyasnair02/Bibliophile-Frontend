@@ -1,0 +1,52 @@
+@import '../../tokens/mixins';
+
+.loading {
+	--col: 1 / -1;
+	position: fixed;
+	height: calc(100vh - 66px);
+	inset: 0;
+	background-color: hsl(var(--surface--300));
+	z-index: 99;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.loading__ring {
+	position: relative;
+	height: 3rem;
+	width: 3rem;
+	@extend %centered;
+
+	div {
+		display: block;
+		position: absolute;
+		width: 3rem;
+		height: 3rem;
+		margin: 0.5rem;
+		border: 0.25rem solid;
+		border-radius: 50%;
+		animation: loading-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+		border-color: hsl(var(--surface--100)) transparent transparent transparent;
+	}
+
+	div:nth-child(1) {
+		animation-delay: -0.45s;
+	}
+
+	div:nth-child(2) {
+		animation-delay: -0.3s;
+	}
+
+	div:nth-child(3) {
+		animation-delay: -0.15s;
+	}
+}
+
+@keyframes loading-ring {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}

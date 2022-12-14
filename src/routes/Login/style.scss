@@ -1,0 +1,59 @@
+.login {
+	align-content: center;
+	justify-items: center;
+	gap: 1.5rem;
+	color: hsl(var(--text-100));
+
+	.content {
+		display: grid;
+		gap: 1rem;
+		width: min(24rem, 100%);
+	}
+
+	form {
+		display: grid;
+		gap: 1rem;
+	}
+
+	h1 {
+		font-size: calc(var(--fs-300) * 2);
+	}
+
+	.field {
+		display: grid;
+		gap: 0.5rem;
+	}
+
+	.btn {
+		background-color: hsl(var(--purple-100));
+		padding: 0.75rem 0;
+		color: hsl(var(--surface--200));
+		line-height: 1;
+		border-radius: 0.4rem;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		font-size: var(--fs-100);
+		font-weight: 600;
+	}
+
+	img {
+		display: none;
+		height: calc(100vh - var(--nav-height));
+		margin: auto 0 0 auto;
+		object-fit: contain;
+		padding-top: 1rem;
+	}
+
+	@media (min-width: 1150px) {
+		img {
+			display: block;
+			--col: 6 / -2;
+		}
+
+		.content {
+			--col: 2 / 6;
+			margin: auto 0;
+			gap: 1.5rem;
+		}
+	}
+}

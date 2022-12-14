@@ -4,13 +4,19 @@ export default function useAuth() {
 	const [auth, setAuth] = useLocalStorage()
 	const authInfo = {
 		isAuthenticated: auth,
-		signin(callback) {
-			setAuth(true)
-			setTimeout(callback, 200)
+		signin(value) {
+			return new Promise((resolve) => {
+				setAuth(JSON.stringify(value))
+				setTimeout(() => {
+					resolve()
+				}, 1000)
+			})
 		},
-		signout(callback) {
-			setAuth(false)
-			setTimeout(callback, 200)
+		signout() {
+			return new Promise((resolve) => {
+				setAuth(callback)
+				resolve()
+			})
 		},
 	}
 	return [

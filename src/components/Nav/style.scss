@@ -21,6 +21,24 @@
 		justify-self: center;
 	}
 
+	&__menu {
+		--col: -3 / -2;
+		--op: 0.2;
+		justify-self: end;
+		padding: 0.75rem;
+		background-color: hsl(var(--surface--100) / var(--op));
+		border-radius: 6px;
+		display: none;
+
+		&:hover {
+			--op: 0.3;
+		}
+
+		&:active {
+			--op: 0.4;
+		}
+	}
+
 	&__link {
 		display: flex;
 		align-items: center;
@@ -37,6 +55,7 @@
 		align-items: center;
 		display: flex;
 		gap: var(--gap);
+		justify-content: end;
 	}
 
 	&__btn {
@@ -59,4 +78,50 @@
 	svg {
 		flex-shrink: 0;
 	}
+
+	@media (max-width: 640px) {
+		--gap: 1rem;
+		position: sticky;
+		top: 0;
+
+		&__menu {
+			display: block;
+		}
+
+		&__list,
+		&__btn-group {
+			--row-start: 2;
+			--col: 2 / -2;
+			display: flex;
+			flex-direction: column;
+			align-items: start;
+		}
+
+		&__btn-group {
+			--row-start: 3;
+			margin: 0 auto;
+			padding-bottom: var(--gap);
+
+			& > :last-child::after {
+				content: 'Sign In';
+			}
+		}
+
+		&__btn {
+			display: flex;
+			gap: 0.25rem;
+			align-items: center;
+		}
+
+		&__action {
+			background-color: transparent;
+			color: hsl(var(--text--100));
+			font: inherit;
+			padding: 0;
+		}
+	}
+}
+
+.hidden {
+	display: none;
 }

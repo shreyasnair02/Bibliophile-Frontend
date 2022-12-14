@@ -1,5 +1,6 @@
 @use 'tokens/base' as *;
 #root {
+	--nav-height: 66px;
 	display: grid;
 	grid-template-columns: repeat(12, minmax(0, 1fr));
 
@@ -14,6 +15,16 @@
 		}
 	}
 }
+
 body {
 	font-family: 'Open Sans', system-ui, -apple-system, sans-serif;
+}
+
+.page {
+	height: calc(100vh - var(--nav-height));
+}
+
+button:focus-visible {
+	outline: 2px solid hsl(var(--purple-100));
+	outline-offset: 2px;
 }
