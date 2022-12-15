@@ -67,9 +67,10 @@
 			margin-top: 0;
 		}
 		&__hero__container img {
-			width: 100%;
+			width: 90%;
 			height: 100%;
 			object-fit: cover;
+			mix-blend-mode: hard-light;
 		}
 		&__welcome {
 			margin-top: 0;
@@ -80,6 +81,14 @@
 		}
 		&__hero__container img {
 			border-radius: 0 0 12px 12px;
+		}
+		.purbtn {
+			background-color: hsl(var(--purple-100));
+			color: hsl(var(--surface--200));
+			text-decoration: none;
+		}
+		a.purbtn:hover {
+			text-decoration: none;
 		}
 	}
 }
