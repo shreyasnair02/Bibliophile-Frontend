@@ -9,6 +9,7 @@ import {
 } from '@tabler/icons'
 import { NavLink } from 'react-router-dom'
 import './style.scss'
+import { useEffect } from 'react'
 
 export default function Nav() {
 	const navItems = [
@@ -26,13 +27,13 @@ export default function Nav() {
 
 	const [menuBool, setMenu] = useState(true)
 
-	window.addEventListener('resize', () => {
-		if (window.innerWidth > 640) {
-			setMenu(true)
-		} else {
-			setMenu(false)
-		}
-	})
+	useEffect(() => {
+		if (window.innerWidth < 640) setMenu(false)
+		window.addEventListener('resize', () => {
+			if (window.innerWidth < 640) setMenu(false)
+			else setMenu(true)
+		})
+	}, [])
 
 	return (
 		<nav className="nav">

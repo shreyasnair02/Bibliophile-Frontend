@@ -7,6 +7,8 @@
 	text-transform: uppercase;
 	border-bottom: 2px solid hsl(var(--surface--200));
 	gap: var(--gap);
+	z-index: 10;
+	background-color: hsl(var(--surface--300));
 
 	&__logo {
 		--col: 2;
