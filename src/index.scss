@@ -1,5 +1,6 @@
 @use 'tokens/base' as *;
-#root {
+
+:where(#root) {
 	--nav-height: 66px;
 	display: grid;
 	grid-template-columns: repeat(12, minmax(0, 1fr));
@@ -21,6 +22,11 @@ body {
 
 .page {
 	height: calc(100vh - var(--nav-height));
+	position: relative;
+
+	@media (max-width: 640px) {
+		margin-top: var(--nav-height);
+	}
 }
 
 button:focus-visible {
