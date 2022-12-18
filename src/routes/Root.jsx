@@ -21,7 +21,7 @@ export default function Root() {
 	return (
 		<>
 			<Nav />
-			<AnimatePresence location={location.pathname}>
+			<AnimatePresence location={location.pathname} initial={false}>
 				<Outlet />
 			</AnimatePresence>
 		</>

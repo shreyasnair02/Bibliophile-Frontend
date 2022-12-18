@@ -1,0 +1,59 @@
+.nav {
+	--row-start: 1;
+	grid-template-rows: 4rem;
+	align-items: center;
+
+	:where(a) {
+		color: hsl(var(--text-100));
+		text-decoration-color: currentColor;
+		text-transform: uppercase;
+	}
+
+	&__login > :nth-child(2) {
+		display: none;
+	}
+
+	&__start {
+		justify-self: start;
+	}
+
+	&__middle {
+		justify-self: center;
+
+		a.active {
+			color: hsl(34 98% 48%);
+		}
+	}
+
+	&__middle,
+	&__end {
+		display: flex;
+		gap: 1.25rem;
+		align-items: center;
+	}
+
+	&__item {
+		display: flex;
+		gap: 0.25rem;
+		align-items: center;
+	}
+
+	&__end {
+		justify-self: end;
+	}
+
+	&__btn {
+		font-size: var(--fs-100);
+		color: hsl(var(--surface--200));
+		background-color: hsl(var(--purple-100));
+		padding: 0.4rem 0.75rem;
+		border-radius: 6px;
+		text-decoration: none;
+		display: flex;
+		align-items: center;
+
+		&:active {
+			transform: scale(0.92);
+		}
+	}
+}
