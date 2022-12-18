@@ -1,5 +1,6 @@
 @use 'tokens/base' as *;
-#root {
+
+:where(#root) {
 	--nav-height: 66px;
 	display: grid;
 	grid-template-columns: repeat(12, minmax(0, 1fr));

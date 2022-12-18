@@ -1,0 +1,81 @@
+import './style.scss'
+import uuid4 from 'uuid4'
+import { NavLink } from 'react-router-dom'
+import {
+	IconBook,
+	IconBooks,
+	IconBuildingStore,
+	IconHome,
+	IconLogin,
+} from '@tabler/icons'
+
+const NavDesktop = () => {
+	const iconConfig = {
+		size: 24,
+		color: 'currentColor',
+	}
+
+	const navConfig = {
+		start: {
+			className: 'nav__logo',
+			to: '/',
+			icon: <IconBook {...iconConfig} />,
+		},
+		middle: [
+			{ name: 'home', to: '/', icon: <IconHome {...iconConfig} /> },
+			{
+				name: 'bookshelf',
+				to: '/bookshelf',
+				icon: <IconBooks {...iconConfig} />,
+			},
+		],
+		end: [
+			{
+				name: 'sellbooks',
+				className: 'nav__btn',
+				to: '/sellbook',
+				icon: <IconBuildingStore {...iconConfig} />,
+			},
+			{
+				name: 'Login',
+				to: '/login',
+				icon: <IconLogin {...iconConfig} />,
+				className: 'nav__login',
+			},
+		],
+	}
+
+	return (
+		<nav className="nav">
+			{Object.keys(navConfig).map((key) => {
+				const navItem = navConfig[key]
+				return (
+					<div className={`nav__${key}`} key={uuid4()}>
+						{Array.isArray(navItem) ? (
+							navItem.map((item) => <NavItem {...item} key={uuid4()} />)
+						) : (
+							<NavItem {...navItem} />
+						)}
+					</div>
+				)
+			})}
+		</nav>
+	)
+}
+
+const NavItem = ({ name, icon, className, to }) => {
+	const classNames = `nav__item ${className ? className : ''}`
+	return (
+		<NavLink
+			to={to}
+			className={({ isActive }) =>
+				isActive ? `${classNames} active` : classNames
+			}
+		>
+			<div className="nav__icon">{icon}</div>
+			{name && <div className="nav__text">{name}</div>}
+		</NavLink>
+	)
+}
+
+export default NavDesktop

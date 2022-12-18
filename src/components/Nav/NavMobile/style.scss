@@ -1,0 +1,40 @@
+.mobile-nav {
+	grid-template-rows: var(--nav-height);
+	z-index: 15;
+
+	:where(a) {
+		color: hsl(var(--text-100));
+		text-decoration: none;
+		text-transform: uppercase;
+	}
+
+	&__list {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		position: fixed;
+		top: var(--nav-height);
+		inset: var(--nav-height) 0 auto 0;
+		z-index: 10;
+		background-color: hsl(var(--surface--200));
+		padding: 1rem 0;
+	}
+
+	&__item {
+		margin: 0 auto;
+		display: flex;
+		gap: 0.25rem;
+	}
+
+	&__menu {
+		padding: 0.75rem;
+		background-color: hsl(var(--surface--200));
+		border-radius: 6px;
+	}
+}
+
+.row {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
