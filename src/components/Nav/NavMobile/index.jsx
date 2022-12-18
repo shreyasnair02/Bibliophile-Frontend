@@ -18,7 +18,6 @@ const NavMobile = () => {
 		const closeNav = (e) => {
 			if (!e.target.classList.contains('mobile-nav__list')) {
 				setIsOpen(false)
-				console.log('yeah boi')
 			}
 		}
 		window.addEventListener('click', closeNav)
