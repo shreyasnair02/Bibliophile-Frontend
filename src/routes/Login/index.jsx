@@ -47,6 +47,7 @@ export default function Login() {
 							type="password"
 							name="password"
 							placeholder="********"
+							minlength={6}
 						/>
 					</div>
 					<button className="btn">Sign In</button>

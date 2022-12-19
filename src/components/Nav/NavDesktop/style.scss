@@ -2,6 +2,7 @@
 	--row-start: 1;
 	grid-template-rows: 4rem;
 	align-items: center;
+	border-bottom: 1px solid hsl(33 50% 86%);
 
 	:where(a) {
 		color: hsl(var(--text-100));
