@@ -6,34 +6,8 @@ import Input from '../../components/Input'
 import PageWrapper from '../../utils/PageWrapper'
 import './style.scss'
 
-function useDebounce(value, delay) {
-	// State and setters for debounced value
-	const [debouncedValue, setDebouncedValue] = useState(value)
-
-	useEffect(
-		() => {
-			// Update debounced value after delay
-			const handler = setTimeout(() => {
-				setDebouncedValue(value)
-			}, delay)
-
-			// Cancel the timeout if value changes (also on delay change or unmount)
-			// This is how we prevent debounced value from updating if value is changed ...
-			// .. within the delay period. Timeout gets cleared and restarted.
-			return () => {
-				clearTimeout(handler)
-			}
-		},
-		[value, delay] // Only re-call effect if value or delay changes
-	)
-
-	return debouncedValue
-}
-
 export default function Bookshelf() {
 	const [books, setBooks] = useState(booksJson)
-
-	const debouncedChanges = useDebounce(books, 200)
 
 	const handleChange = (e) => {
 		const searchQuery = e.target.value || ''
@@ -57,25 +31,21 @@ export default function Bookshelf() {
 					onChange={handleChange}
 				/>
 				<div className="bookshelf__books-section">
-					<AnimatePresence>
-						{debouncedChanges.map((book) => (
-							<LayoutGroup key={uuid4()}>
-								<motion.div
-									layout
-									transition={{ duration: 0.2 }}
-									className="bookshelf__book"
-								>
-									<img src={book.url} alt={book.title} />
-									<div className="bookshelf__book-info">
-										<p style={{ textDecoration: 'line-through' }}>
-											₹{book.price + 1000}
-										</p>
-										<h3>₹{book.price}</h3>
-									</div>
-								</motion.div>
-							</LayoutGroup>
-						))}
-					</AnimatePresence>
+					{books.map((book) => (
+						<div
+							layout
+							transition={{ duration: 0.2 }}
+							className="bookshelf__book"
+						>
+							<img src={book.url} alt={book.title} />
+							<div className="bookshelf__book-info">
+								<p style={{ textDecoration: 'line-through' }}>
+									₹{book.price + 1000}
+								</p>
+								<h3>₹{book.price}</h3>
+							</div>
+						</div>
+					))}
 				</div>
 			</div>
 			<div className="bookshelf__recommendation">
