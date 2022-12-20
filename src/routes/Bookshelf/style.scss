@@ -1,0 +1,54 @@
+.bookshelf {
+	grid-template-columns: repeat(24, 1fr);
+
+	h4 {
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		color: hsl(var(--text-100));
+	}
+
+	> * {
+		padding: 2rem;
+	}
+
+	.input__icon {
+		background-color: hsl(var(--surface--200));
+	}
+
+	&__form {
+		display: flex;
+		gap: 0.5rem;
+
+		button {
+			background-color: hsl(var(--purple-100));
+			padding: 0.5rem 1rem;
+			border-radius: 6px;
+			color: hsl(var(--surface--300));
+			align-self: center;
+		}
+	}
+
+	&__filter {
+		--col: 1 / 6;
+		background-color: hsl(var(--surface--200) / 0.8);
+	}
+
+	&__books {
+		--col: 6 / 19;
+		overflow-y: auto;
+	}
+
+	&__books-section {
+		--min: 15ch;
+		--gap: 1.25rem;
+		display: grid;
+		gap: var(--gap);
+		grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--min)), 1fr));
+		margin-top: 2rem;
+	}
+
+	&__recommendation {
+		--col: 19 / -1;
+		background-color: hsl(33 100% 98%);
+	}
+}
