@@ -34,13 +34,13 @@
 	}
 
 	&__books {
-		--col: 6 / 20;
+		--col: 6 / 19;
 		overflow-y: auto;
 	}
 
 	&__books-section {
-		--min: 20ch;
-		--gap: 1rem;
+		--min: 15ch;
+		--gap: 1.25rem;
 		display: grid;
 		gap: var(--gap);
 		grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--min)), 1fr));
@@ -48,7 +48,7 @@
 	}
 
 	&__recommendation {
-		--col: 20 / -1;
+		--col: 19 / -1;
 		background-color: hsl(33 100% 98%);
 	}
 }

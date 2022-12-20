@@ -5,6 +5,7 @@ import booksJson from '../../assets/books.json'
 import uuid4 from 'uuid4'
 
 export default function Bookshelf() {
+
 	return (
 		<PageWrapper className="bookshelf page">
 			<div className="bookshelf__filter">
@@ -24,8 +25,8 @@ export default function Bookshelf() {
 						<div className="bookshelf__book" key={uuid4()}>
 							<img src={book.url} alt={book.title} />
 							<div className="bookshelf__book-info">
-								<h4>{book.title}</h4>
-								<p>{book.author}</p>
+								<p style={{ textDecoration: 'line-through'}}>₹{book.price + Math.ceil(Math.random() * 1000)}</p>
+								<h5>₹{book.price}</h5>
 							</div>
 						</div>
 					))}
