@@ -1,5 +1,6 @@
 import './style.scss'
 import uuid4 from 'uuid4'
+import useAuth from '../../../hooks/useAuth'
 import { NavLink } from 'react-router-dom'
 import {
 	IconBook,
@@ -64,6 +65,8 @@ const NavDesktop = () => {
 }
 
 const NavItem = ({ name, icon, className, to }) => {
+	const [loggedIn] = useAuth()
+	if (loggedIn && name === 'Login') return null
 	const classNames = `nav__item ${className ? className : ''}`
 	return (
 		<NavLink

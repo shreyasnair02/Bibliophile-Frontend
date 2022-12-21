@@ -1,6 +1,6 @@
-import { MotionConfig } from 'framer-motion'
+import { IconShoppingCart, IconShoppingCartPlus } from '@tabler/icons'
 import { AnimatePresence, LayoutGroup, motion } from 'framer-motion'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import uuid4 from 'uuid4'
 import booksJson from '../../assets/books.json'
 import Input from '../../components/Input'
@@ -9,7 +9,7 @@ import './style.scss'
 
 export default function Bookshelf() {
 	const [books, setBooks] = useState(booksJson)
-	const [anim, setAnim] = useState(false)
+	const [anim, setAnim] = useState(false) // thinking of using this for layout animation
 
 	const handleChange = (e) => {
 		const searchQuery = e.target.value || ''
@@ -34,37 +34,47 @@ export default function Bookshelf() {
 				/>
 				<div className="bookshelf__books-section">
 					{books.map((book) => (
-						<motion.div
-							key={uuid4()}
-							initial={{ opacity: 0, y: '40px' }}
-							whileInView={{ opacity: 1, y: '0px' }}
-							viewport={{ once: true }}
-							className="bookshelf__book"
-						>
-							<img src={book.url} alt={book.title} />
-							<div className="bookshelf__book-info">
-								<p style={{ textDecoration: 'line-through' }}>
-									₹{book.price + 1000}
-								</p>
-								<h3>₹{book.price}</h3>
-							</div>
-						</motion.div>
+						<Book book={book} key={uuid4()} />
 					))}
 				</div>
 			</div>
 			<div className="bookshelf__recommendation">
 				<h4>People also like</h4>
 			</div>
+			<button className="bookshelf__cart">
+				<IconShoppingCart size={26} color="currentColor" />
+				<div className="bookshelf__no-of-books">3</div>
+			</button>
 		</PageWrapper>
 	)
 }
 
 const Book = ({ book }) => {
 	return (
-		<div className="bookshelf__book-container">
+		<motion.div
+			initial={{ opacity: 0, y: '40px' }}
+			whileInView={{ opacity: 1, y: '0px' }}
+			viewport={{ once: true }}
+			className="bookshelf__book-container"
+		>
 			<div className="bookshelf__book">
-				<img src={book.url} alt={book.title} />
+				<img
+					className="bookshelf__book-cover"
+					src={book.url}
+					alt={book.title}
+				/>
+				<div className="bookshelf__mini-info">
+					<div className="bookshelf__price-container">
+						<div className="bookshelf__original-price">
+							₹{book.price + 1000}
+						</div>
+						<h3 className="bookshelf__reduced-price">₹{book.price}</h3>
+					</div>
+					<button className="bookshelf__addtocart">
+						<IconShoppingCartPlus size={20} color="currentColor" />
+					</button>
+				</div>
 			</div>
-		</div>
+		</motion.div>
 	)
 }

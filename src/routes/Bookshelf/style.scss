@@ -38,12 +38,67 @@
 		overflow-y: auto;
 	}
 
+	&__mini-info {
+		display: flex;
+		justify-content: space-between;
+		padding: 4px;
+		align-items: center;
+		width: min(15ch + 1.25rem, 100%);
+	}
+
+	&__original-price {
+		text-decoration: line-through;
+		font-size: 0.8rem;
+	}
+
+	&__addtocart {
+		padding: 0.5rem;
+		background-color: hsl(var(--surface--200));
+		border-radius: 50%;
+
+		&:active {
+			scale: 1.15;
+		}
+	}
+
+	&__book-cover {
+		height: 15.625rem;
+		object-fit: cover;
+	}
+
+	&__cart {
+		position: fixed;
+		inset: auto 2rem 2rem auto;
+		padding: 1.25rem;
+		border-radius: 50%;
+		background-color: hsl(var(--surface--200));
+	}
+
+	&__no-of-books {
+		position: absolute;
+		font-size: 14px;
+		top: 0;
+		right: 0;
+		background-color: hsl(var(--surface--100));
+		height: 24px;
+		width: 24px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 0.25rem 0.5rem;
+		border-radius: 50%;
+		font-weight: bold;
+	}
+
 	&__books-section {
 		--min: 15ch;
 		--gap: 1.25rem;
 		display: grid;
 		gap: var(--gap);
-		grid-template-columns: repeat(auto-fill, minmax(min(100%, var(--min)), 1fr));
+		grid-template-columns: repeat(
+			auto-fill,
+			minmax(min(100%, var(--min)), 1fr)
+		);
 		margin-top: 2rem;
 	}
 
