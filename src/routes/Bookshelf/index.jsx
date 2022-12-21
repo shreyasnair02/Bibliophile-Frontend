@@ -1,5 +1,7 @@
+import { IconStar } from '@tabler/icons'
 import { IconShoppingCart, IconShoppingCartPlus } from '@tabler/icons'
 import { AnimatePresence, LayoutGroup, motion } from 'framer-motion'
+import { useEffect } from 'react'
 import { useState } from 'react'
 import uuid4 from 'uuid4'
 import booksJson from '../../assets/books.json'
@@ -49,15 +51,22 @@ export default function Bookshelf() {
 	)
 }
 
-const Book = ({ book }) => {
+const Book = ({ book, key }) => {
+	const [showInfo, setShowInfo] = useState(false)
+
 	return (
 		<motion.div
+			key={key}
 			initial={{ opacity: 0, y: '40px' }}
 			whileInView={{ opacity: 1, y: '0px' }}
 			viewport={{ once: true }}
 			className="bookshelf__book-container"
 		>
-			<div className="bookshelf__book">
+			<div
+				className="bookshelf__book"
+				onMouseOver={() => setShowInfo(true)}
+				onMouseLeave={() => setShowInfo(false)}
+			>
 				<img
 					className="bookshelf__book-cover"
 					src={book.url}
@@ -75,6 +84,31 @@ const Book = ({ book }) => {
 					</button>
 				</div>
 			</div>
+			<AnimatePresence>
+				{showInfo && (
+					<motion.div
+						initial={{ opacity: 0, y: '20px' }}
+						animate={{ opacity: 1, y: '0px' }}
+						exit={{ opacity: 0, y: '-20px' }}
+						className="bookshelf__book-info"
+					>
+						<h3 className="bookshelf__book-title">{book.title}</h3>
+						<h5 className="bookshelf__book-author">{book.author}</h5>
+						<div className="bookshelf__book-rating">
+							<p>Condition</p>
+							<div className="rate">
+								{[...Array(Math.floor(book.rating))].map((_, i) => (
+									<IconStar key={i} size={18} color="currentColor" />
+								))}
+							</div>
+						</div>
+						<div className="bookshelf__about-container">
+							<h5>About the book</h5>
+							<p>{book.summary}</p>
+						</div>
+					</motion.div>
+				)}
+			</AnimatePresence>
 		</motion.div>
 	)
 }

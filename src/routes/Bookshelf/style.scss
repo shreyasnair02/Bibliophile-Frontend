@@ -35,7 +35,6 @@
 
 	&__books {
 		--col: 6 / 19;
-		overflow-y: auto;
 	}
 
 	&__mini-info {
@@ -59,6 +58,43 @@
 		&:active {
 			scale: 1.15;
 		}
+	}
+
+	&__book-container {
+		display: flex;
+		position: relative;
+	}
+
+	&__about-container {
+		p {
+			font-size: 0.8rem;
+			display: -webkit-box;
+			-webkit-line-clamp: 4;
+			-webkit-box-orient: vertical;
+			overflow: hidden;
+		}
+	}
+
+	&__book-info {
+		pointer-events: none;
+		position: absolute;
+		left: 100%;
+		width: 350px;
+		top: 50px;
+		border-radius: 6px;
+		z-index: 100;
+		background-color: hsl(var(--surface--200));
+		padding: 1rem;
+	}
+
+	& .rate {
+		display: flex;
+		gap: 0.25rem;
+	}
+
+	&__book-rating {
+		display: flex;
+		justify-content: space-between;
 	}
 
 	&__book-cover {
