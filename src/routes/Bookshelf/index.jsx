@@ -1,9 +1,11 @@
-import { useState, useEffect } from 'react'
 import PageWrapper from '../../utils/PageWrapper'
+import { MotionConfig } from 'framer-motion'
+import { AnimatePresence, LayoutGroup, motion } from 'framer-motion'
+import { useState, useEffect } from 'react'
+import uuid4 from 'uuid4'
+import booksJson from '../../assets/books.json'
 import Input from '../../components/Input'
 import './style.scss'
-import booksJson from '../../assets/books.json'
-import uuid4 from 'uuid4'
 import genres from './constants/genres.json'
 export default function Bookshelf() {
 	const [checkedState, setCheckedState] = useState(genres)
@@ -27,6 +29,15 @@ export default function Bookshelf() {
 				}
 			}
 		)
+	const [anim, setAnim] = useState(false)
+	const handleChange = (e) => {
+		const searchQuery = e.target.value || ''
+		const filteredBooks = booksJson.filter((book) =>
+			book.title.toLowerCase().includes(searchQuery)
+		)
+		setBooks(filteredBooks)
+	}
+
 
 		setCheckedState(updatedCheckedState)
 	}
@@ -50,16 +61,16 @@ export default function Bookshelf() {
 				</div>
 			</div>
 			<div className="bookshelf__books">
-				<form className="bookshelf__form">
-					<Input
-						type="search"
-						className="bookshelf__search"
-						placeholder="Search for books..."
-					/>
-					{/* <button className=''>Search</button> */}
-				</form>
+				<Input
+					type="search"
+					className="bookshelf__search"
+					placeholder="Search for books..."
+					name="search"
+					onChange={handleChange}
+				/>
 				<div className="bookshelf__books-section">
 					{books.map((book) => (
+
 						<div className="bookshelf__book" key={uuid4()}>
 							<img src={book.url} alt={book.title} />
 							<div className="bookshelf__book-info">
@@ -67,8 +78,23 @@ export default function Bookshelf() {
 									₹{book.price + Math.ceil(Math.random() * 1000)}
 								</p>
 								<h5>₹{book.price}</h5>
+
+						<motion.div
+							key={uuid4()}
+							initial={{ opacity: 0, y: '40px' }}
+							whileInView={{ opacity: 1, y: '0px' }}
+							viewport={{ once: true }}
+							className="bookshelf__book"
+						>
+							<img src={book.url} alt={book.title} />
+							<div className="bookshelf__book-info">
+								<p style={{ textDecoration: 'line-through' }}>
+									₹{book.price + 1000}
+								</p>
+								<h3>₹{book.price}</h3>
+
 							</div>
-						</div>
+						</motion.div>
 					))}
 				</div>
 			</div>
@@ -76,5 +102,15 @@ export default function Bookshelf() {
 				<h4>People also like</h4>
 			</div>
 		</PageWrapper>
+	)
+}
+
+const Book = ({ book }) => {
+	return (
+		<div className="bookshelf__book-container">
+			<div className="bookshelf__book">
+				<img src={book.url} alt={book.title} />
+			</div>
+		</div>
 	)
 }
