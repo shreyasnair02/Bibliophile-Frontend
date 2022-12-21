@@ -3,6 +3,7 @@ import { IconShoppingCart, IconShoppingCartPlus } from '@tabler/icons'
 import { AnimatePresence, LayoutGroup, motion } from 'framer-motion'
 import { useEffect } from 'react'
 import { useState } from 'react'
+import Loading from '../../components/Loading'
 import uuid4 from 'uuid4'
 import booksJson from '../../assets/books.json'
 import Input from '../../components/Input'
@@ -12,6 +13,11 @@ import './style.scss'
 export default function Bookshelf() {
 	const [books, setBooks] = useState(booksJson)
 	const [anim, setAnim] = useState(false) // thinking of using this for layout animation
+	const [loading, setLoading] = useState(true)
+
+	useEffect(() => {
+		setTimeout(() => setLoading(false), 2000)
+	}, [])
 
 	const handleChange = (e) => {
 		const searchQuery = e.target.value || ''

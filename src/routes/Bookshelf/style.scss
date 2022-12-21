@@ -76,13 +76,12 @@
 	}
 
 	&__book-info {
-		pointer-events: none;
 		position: absolute;
 		left: 100%;
 		width: 350px;
 		top: 50px;
 		border-radius: 6px;
-		z-index: 100;
+		z-index: 98;
 		background-color: hsl(var(--surface--200));
 		padding: 1rem;
 	}
