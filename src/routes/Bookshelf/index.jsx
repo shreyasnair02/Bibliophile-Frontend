@@ -1,14 +1,31 @@
-import { IconShoppingCart, IconShoppingCartPlus, IconStar } from '@tabler/icons'
+import {
+	IconShoppingCart,
+	IconShoppingCartPlus,
+	IconStar,
+	IconX,
+} from '@tabler/icons'
 import { AnimatePresence, motion } from 'framer-motion'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import uuid4 from 'uuid4'
 import booksJson from '../../assets/books.json'
 import Input from '../../components/Input'
+import genres from '../../routes/Bookshelf/constants/genres.json'
 import PageWrapper from '../../utils/PageWrapper'
 import './style.scss'
 
 export default function Bookshelf() {
+	const [checkedState, setCheckedState] = useState(genres)
 	const [books, setBooks] = useState(booksJson)
+	const [recbooks, setRecbooks] = useState(() => {
+		const recBookz = books.filter((boo) => {
+			if (books[0].related.includes(boo.id)) {
+				return true
+			}
+		})
+		return recBookz
+	})
+
+	const initialRender = useRef(0)
 
 	const handleChange = (e) => {
 		const searchQuery = e.target.value.toLowerCase() || ''
@@ -17,11 +34,88 @@ export default function Bookshelf() {
 		)
 		setBooks(filteredBooks)
 	}
+	const handleCheckstate = (position) => {
+		const updatedCheckedState = checkedState.map(
+			({ genre, checked }, index) => {
+				if (index === position) {
+					return { genre, checked: !checked }
+				} else {
+					return { genre, checked }
+				}
+			}
+		)
+		setCheckedState(updatedCheckedState)
+	}
+	useEffect(() => {
+		if (initialRender.current <= 1) {
+			initialRender.current = initialRender.current + 1
+
+			setBooks(booksJson)
+		} else {
+			const updatedBooks = booksJson.filter((book) =>
+				checkedState.some((eachGenre) => {
+					return eachGenre.checked && book.genre.includes(eachGenre.genre)
+				})
+			)
+			setBooks(updatedBooks)
+		}
+		if (initialRender.current > 1 && checkNone()) {
+			setBooks(booksJson)
+		}
+	}, [checkedState])
+	useEffect(() => {
+		setRecbooks(() => {
+			const recBookss = books.filter((boo) => {
+				if (books[0].related.includes(boo.id)) {
+					return true
+				}
+			})
+			return recBookss
+		})
+	}, [books])
+	const checkNone = () => {
+		let flag = true
+		checkedState.forEach((obj) => {
+			if (obj.checked) {
+				flag = false
+			}
+		})
+		return flag
+	}
+	const styles = {
+		hide: {
+			opacity: checkNone() ? '0' : '1',
+			display: checkNone() ? 'none' : 'flex',
+		},
+	}
+	const handleClear = () => {
+		setCheckedState(genres)
+	}
 
 	return (
 		<PageWrapper className="bookshelf page">
 			<div className="bookshelf__filter">
 				<h4>Filter By</h4>
+				<div className="bookshelf__filter-section">
+					{checkedState.map((eachGenre, index) => (
+						<div key={uuid4()}>
+							<label htmlFor={eachGenre.genre}>{eachGenre.genre}</label>
+							<input
+								type="checkbox"
+								name="filter"
+								id={eachGenre.genre}
+								checked={eachGenre.checked}
+								onChange={() => handleCheckstate(index)}
+							/>
+						</div>
+					))}
+					<div className="bookshelf__filter-section-clear" style={styles.hide}>
+						<button onClick={handleClear}>
+							<IconX size={19} color="red" />
+							<span>Reset</span>
+						</button>
+					</div>
+				</div>
 			</div>
 			<div className="bookshelf__books">
 				<Input
@@ -39,6 +133,17 @@ export default function Bookshelf() {
 			</div>
 			<div className="bookshelf__recommendation">
 				<h4>People also like</h4>
+				<div className="bookshelf__recommendation-section">
+					{recbooks.map((boo) => (
+						<div>
+							<img
+								src={boo.url}
+								alt={boo.title}
+								className="bookshelf__book-cover bookshelf__book-cover-small"
+							/>
+						</div>
+					))}
+				</div>
 			</div>
 			<button className="bookshelf__cart">
 				<IconShoppingCart size={26} color="currentColor" />
