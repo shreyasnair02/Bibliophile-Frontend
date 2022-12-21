@@ -1,11 +1,11 @@
-import './style.scss'
-import useAuth from '../../hooks/useAuth'
-import { useNavigate } from 'react-router-dom'
-import PageWrapper from '../../utils/PageWrapper'
 import { useState } from 'react'
-import Loading from '../../components/Loading'
-import Input from '../../components/Input'
+import { useNavigate } from 'react-router-dom'
 import treeImg from '../../assets/book-tree.png'
+import Input from '../../components/Input'
+import Loading from '../../components/Loading'
+import useAuth from '../../hooks/useAuth'
+import PageWrapper from '../../utils/PageWrapper'
+import './style.scss'
 
 export default function Login() {
 	const [_, setUserAuth] = useAuth()

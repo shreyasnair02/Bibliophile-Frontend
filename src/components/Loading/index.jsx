@@ -1,6 +1,5 @@
+import { AnimatePresence, motion } from 'framer-motion'
 import './style.scss'
-import { motion } from 'framer-motion'
-import { AnimatePresence } from 'framer-motion'
 
 export default function Loading() {
 	return (

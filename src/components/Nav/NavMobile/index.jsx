@@ -1,17 +1,15 @@
-import './style.scss'
-import { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
-import { NavLink } from 'react-router-dom'
 import {
 	IconBook,
 	IconBooks,
 	IconBuildingStore,
 	IconHome,
-	IconLogin,
+	IconLogin, IconMenu
 } from '@tabler/icons'
-import { IconMenu } from '@tabler/icons'
-import { AnimatePresence } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
+import { useEffect, useState } from 'react'
+import { NavLink } from 'react-router-dom'
 import useAuth from '../../../hooks/useAuth'
+import './style.scss'
 const NavMobile = () => {
 	const [isOpen, setIsOpen] = useState(false)
 

@@ -4,5 +4,5 @@ export default function Error() {
 	const error = useRouteError()
 	console.error(error)
 
-	return <h1>Damn, cannot get the url right. Dumb Hooman</h1>
+	return <h1>Page Not Found</h1>
 }
