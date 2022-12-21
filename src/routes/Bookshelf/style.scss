@@ -31,12 +31,30 @@
 	&__filter {
 		--col: 1 / 6;
 		background-color: hsl(var(--surface--200) / 0.8);
+
+		@media (max-width: 880px) {
+			display: none;
+		}
 	}
 
 	&__books {
 		--col: 6 / 19;
 		overflow-y: auto;
 		overflow-x: hidden;
+
+		@media (max-width: 980px) {
+			--col: 6 / -1;
+		}
+
+		@media (max-width: 880px) {
+			--col: 1 / -1;
+		}
+	}
+
+	&__search {
+		@media (max-width: 880px) {
+			margin: 0 auto;
+		}
 	}
 
 	&__mini-info {
@@ -45,6 +63,10 @@
 		padding: 4px;
 		align-items: center;
 		width: min(15ch + 1.25rem, 100%);
+	}
+
+	&__book {
+		flex-shrink: 0;
 	}
 
 	&__original-price {
@@ -86,6 +108,16 @@
 		z-index: 98;
 		background-color: hsl(var(--surface--200));
 		padding: 1rem;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		gap: 0.8rem;
+
+		@media (max-width: 600px) {
+			position: static;
+			width: 100%;
+			border-radius: 0 6px 6px 0;
+		}
 	}
 
 	& .rate {
@@ -96,6 +128,10 @@
 	&__book-rating {
 		display: flex;
 		justify-content: space-between;
+
+		@media (max-width: 600px) {
+			flex-direction: column;
+		}
 	}
 
 	&__book-cover {
@@ -109,6 +145,7 @@
 		padding: 1.25rem;
 		border-radius: 50%;
 		background-color: hsl(var(--surface--200));
+		z-index: 100;
 	}
 
 	&__no-of-books {
@@ -137,10 +174,18 @@
 			minmax(min(100%, var(--min)), 1fr)
 		);
 		margin-top: 2rem;
+
+		@media (max-width: 600px) {
+			grid-template-columns: 1fr;
+		}
 	}
 
 	&__recommendation {
 		--col: 19 / -1;
 		background-color: hsl(33 100% 98%);
+
+		@media (max-width: 980px) {
+			display: none;
+		}
 	}
 }

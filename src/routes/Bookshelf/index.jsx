@@ -1,9 +1,7 @@
-import { IconStar } from '@tabler/icons'
-import { IconShoppingCart, IconShoppingCartPlus } from '@tabler/icons'
-import { AnimatePresence, LayoutGroup, motion } from 'framer-motion'
+import { IconShoppingCart, IconShoppingCartPlus, IconStar } from '@tabler/icons'
+import { AnimatePresence, motion } from 'framer-motion'
 import { useEffect } from 'react'
 import { useState } from 'react'
-import Loading from '../../components/Loading'
 import uuid4 from 'uuid4'
 import booksJson from '../../assets/books.json'
 import Input from '../../components/Input'
@@ -12,7 +10,6 @@ import './style.scss'
 
 export default function Bookshelf() {
 	const [books, setBooks] = useState(booksJson)
-	const [anim, setAnim] = useState(false) // thinking of using this for layout animation
 
 	const handleChange = (e) => {
 		const searchQuery = e.target.value || ''
@@ -54,6 +51,24 @@ export default function Bookshelf() {
 
 const Book = ({ book, key }) => {
 	const [showInfo, setShowInfo] = useState(false)
+	const [isMobile, setIsMobile] = useState(false)
+
+	useEffect(() => {
+		if (window.innerWidth < 600) {
+			setIsMobile(true)
+			setShowInfo(true)
+		}
+
+		window.addEventListener('resize', () => {
+			if (window.innerWidth < 600) {
+				setIsMobile(true)
+				setShowInfo(true)
+			} else {
+				setIsMobile(false)
+				setShowInfo(false)
+			}
+		})
+	}, [])
 
 	return (
 		<motion.div
@@ -65,8 +80,8 @@ const Book = ({ book, key }) => {
 		>
 			<div
 				className="bookshelf__book"
-				onMouseOver={() => setShowInfo(true)}
-				onMouseLeave={() => setShowInfo(false)}
+				onMouseOver={() => !isMobile && setShowInfo(true)}
+				onMouseLeave={() => !isMobile && setShowInfo(false)}
 			>
 				<img
 					className="bookshelf__book-cover"
