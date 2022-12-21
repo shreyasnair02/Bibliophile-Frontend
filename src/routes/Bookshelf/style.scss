@@ -9,23 +9,18 @@
 
 	> * {
 		padding: 2rem;
+
+		@media (max-width: 880px) {
+			padding: 1rem;
+		}
+		
+		@media (max-width: 600px) {
+			padding: 0.5rem;
+		}
 	}
 
 	.input__icon {
 		background-color: hsl(var(--surface--200));
-	}
-
-	&__form {
-		display: flex;
-		gap: 0.5rem;
-
-		button {
-			background-color: hsl(var(--purple-100));
-			padding: 0.5rem 1rem;
-			border-radius: 6px;
-			color: hsl(var(--surface--300));
-			align-self: center;
-		}
 	}
 
 	&__filter {
@@ -67,6 +62,7 @@
 
 	&__book {
 		flex-shrink: 0;
+		align-self: center;
 	}
 
 	&__original-price {
@@ -117,6 +113,8 @@
 			position: static;
 			width: 100%;
 			border-radius: 0 6px 6px 0;
+			gap: 0.25rem;
+			padding: 0.5rem;
 		}
 	}
 
@@ -131,12 +129,32 @@
 
 		@media (max-width: 600px) {
 			flex-direction: column;
+
+			p {
+				display: none;
+			}
 		}
 	}
 
 	&__book-cover {
 		height: 15.625rem;
 		object-fit: cover;
+
+		@media (max-width: 600px) {
+			height: 10rem;
+		}
+	}
+
+	&__book-title {
+		@media (max-width: 600px) {
+			font-size: 1rem;
+		}
+	}
+
+	&__book-author {
+		@media (max-width: 600px) {
+			font-size: 0.7rem;
+		}
 	}
 
 	&__cart {
@@ -177,6 +195,7 @@
 
 		@media (max-width: 600px) {
 			grid-template-columns: 1fr;
+			margin-top: 1rem;
 		}
 	}
 

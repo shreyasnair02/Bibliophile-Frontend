@@ -12,7 +12,7 @@ export default function Bookshelf() {
 	const [books, setBooks] = useState(booksJson)
 
 	const handleChange = (e) => {
-		const searchQuery = e.target.value || ''
+		const searchQuery = e.target.value.toLowerCase() || ''
 		const filteredBooks = booksJson.filter((book) =>
 			book.title.toLowerCase().includes(searchQuery)
 		)
@@ -114,7 +114,7 @@ const Book = ({ book, key }) => {
 							<p>Condition</p>
 							<div className="rate">
 								{[...Array(Math.floor(book.rating))].map((_, i) => (
-									<IconStar key={i} size={18} color="currentColor" />
+									<IconStar key={i} size={18} fill="currentColor" />
 								))}
 							</div>
 						</div>
