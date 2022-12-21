@@ -35,6 +35,8 @@
 
 	&__books {
 		--col: 6 / 19;
+		overflow-y: auto;
+		overflow-x: hidden;
 	}
 
 	&__mini-info {

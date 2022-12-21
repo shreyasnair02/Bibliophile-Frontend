@@ -13,11 +13,6 @@ import './style.scss'
 export default function Bookshelf() {
 	const [books, setBooks] = useState(booksJson)
 	const [anim, setAnim] = useState(false) // thinking of using this for layout animation
-	const [loading, setLoading] = useState(true)
-
-	useEffect(() => {
-		setTimeout(() => setLoading(false), 2000)
-	}, [])
 
 	const handleChange = (e) => {
 		const searchQuery = e.target.value || ''
@@ -63,8 +58,8 @@ const Book = ({ book, key }) => {
 	return (
 		<motion.div
 			key={key}
-			initial={{ opacity: 0, y: '40px' }}
-			whileInView={{ opacity: 1, y: '0px' }}
+			initial={{ opacity: 0 }}
+			whileInView={{ opacity: 1 }}
 			viewport={{ once: true }}
 			className="bookshelf__book-container"
 		>
@@ -90,7 +85,7 @@ const Book = ({ book, key }) => {
 					</button>
 				</div>
 			</div>
-			<AnimatePresence>
+			<AnimatePresence initial={false}>
 				{showInfo && (
 					<motion.div
 						initial={{ opacity: 0, y: '20px' }}
