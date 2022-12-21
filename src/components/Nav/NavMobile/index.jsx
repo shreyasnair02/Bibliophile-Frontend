@@ -11,6 +11,7 @@ import {
 } from '@tabler/icons'
 import { IconMenu } from '@tabler/icons'
 import { AnimatePresence } from 'framer-motion'
+import useAuth from '../../../hooks/useAuth'
 const NavMobile = () => {
 	const [isOpen, setIsOpen] = useState(false)
 
@@ -76,6 +77,7 @@ const NavMobile = () => {
 }
 
 const NavList = ({ config }) => {
+
 	return (
 		<motion.div
 			initial={{ opacity: 0, y: '-20px' }}
@@ -86,6 +88,8 @@ const NavList = ({ config }) => {
 		>
 			{config.map(({ name, to, icon, className }, idx) => {
 				const classNames = `mobile-nav__item ${className ? className : ''}`
+				const [loggedIn] = useAuth()
+				if(name === 'login' && loggedIn) return null
 				return (
 					<NavLink
 						to={to}
