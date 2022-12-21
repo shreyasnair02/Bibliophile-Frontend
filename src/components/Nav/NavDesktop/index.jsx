@@ -1,14 +1,14 @@
-import './style.scss'
-import uuid4 from 'uuid4'
-import useAuth from '../../../hooks/useAuth'
-import { NavLink } from 'react-router-dom'
 import {
 	IconBook,
 	IconBooks,
 	IconBuildingStore,
 	IconHome,
-	IconLogin,
+	IconLogin
 } from '@tabler/icons'
+import { NavLink } from 'react-router-dom'
+import uuid4 from 'uuid4'
+import useAuth from '../../../hooks/useAuth'
+import './style.scss'
 
 const NavDesktop = () => {
 	const iconConfig = {

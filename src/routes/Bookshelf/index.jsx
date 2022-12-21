@@ -1,7 +1,6 @@
 import { IconShoppingCart, IconShoppingCartPlus, IconStar } from '@tabler/icons'
 import { AnimatePresence, motion } from 'framer-motion'
-import { useEffect } from 'react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import uuid4 from 'uuid4'
 import booksJson from '../../assets/books.json'
 import Input from '../../components/Input'

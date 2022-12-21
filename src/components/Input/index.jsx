@@ -1,6 +1,5 @@
+import { IconAt, IconLock, IconSearch } from '@tabler/icons'
 import './style.scss'
-import { IconAt, IconLock } from '@tabler/icons'
-import { IconSearch } from '@tabler/icons'
 
 const IconProps = { size: 18, color: 'currentColor' }
 
