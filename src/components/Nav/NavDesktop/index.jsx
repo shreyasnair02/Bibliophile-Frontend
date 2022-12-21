@@ -32,7 +32,7 @@ const NavDesktop = () => {
 		],
 		end: [
 			{
-				name: 'sellbooks',
+				name: 'sell books',
 				className: 'nav__btn',
 				to: '/sellbook',
 				icon: <IconBuildingStore {...iconConfig} />,

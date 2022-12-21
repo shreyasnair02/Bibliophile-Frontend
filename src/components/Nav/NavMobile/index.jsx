@@ -40,7 +40,7 @@ const NavMobile = () => {
 			icon: <IconBooks {...iconConfig} />,
 		},
 		{
-			name: 'sellbooks',
+			name: 'sell books',
 			className: 'mobile-nav__btn',
 			to: '/sellbook',
 			icon: <IconBuildingStore {...iconConfig} />,
