@@ -1,6 +1,6 @@
 .mobile-nav {
 	grid-template-rows: var(--nav-height);
-	z-index: 15;
+	z-index: 102;
 	border-bottom: 1px solid hsl(33 50% 86%);
 
 	:where(a) {

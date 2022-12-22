@@ -168,7 +168,7 @@
 		padding: 1.25rem;
 		border-radius: 50%;
 		background-color: hsl(var(--surface--200));
-		z-index: 100;
+		z-index: 101;
 	}
 
 	&__no-of-books {
@@ -204,6 +204,35 @@
 		}
 	}
 
+	&__cart-items {
+		--min: 15ch;
+		--gap: 1.25rem;
+		margin-top: 1rem;
+		display: grid;
+		gap: var(--gap);
+		grid-template-columns: repeat(
+			auto-fill,
+			minmax(min(100%, var(--min)), 1fr)
+		);
+	}
+
+	&__cart-item-cover {
+		height: 15rem;
+		object-fit: cover;
+
+		@media(max-width: 600px) {
+			height: 10rem;
+		}
+	}
+
+	&__cart-total {
+		font-size: 1.5rem;
+
+		@media (max-width: 600px) {
+			font-size: 1rem;
+		}
+	}
+
 	&__recommendation {
 		--col: 19 / -1;
 		background-color: hsl(33 100% 98%);
@@ -214,11 +243,17 @@
 	}
 
 	&__cart-page {
+		--col: 1 / -1;
 		position: absolute;
+		z-index: 100;
 		background-color: hsl(var(--surface--200));
-		height: 60%;
-		width: 60%;
+		inset: 0;
+
+		> * {
+			--col: 2 / -2;
+		}
 	}
+
 	&__recommendation-section {
 		// display: grid;
 		// grid-template-columns: repeat(2, 1fr);

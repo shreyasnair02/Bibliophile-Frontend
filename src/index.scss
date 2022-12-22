@@ -23,6 +23,7 @@ body {
 
 .page {
 	height: calc(100vh - var(--nav-height));
+	position: relative;
 }
 
 button:focus-visible {

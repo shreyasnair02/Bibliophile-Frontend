@@ -128,9 +128,13 @@ export default function Bookshelf() {
 					onChange={handleChange}
 				/>
 				<div className="bookshelf__books-section">
-					{books.map((book) => (
-						<Book book={book} key={uuid4()} cart={cart} setCart={setCart} />
-					))}
+					{books.length ? (
+						books.map((book) => (
+							<Book book={book} key={uuid4()} cart={cart} setCart={setCart} />
+						))
+					) : (
+						<h2>No books found</h2>
+					)}
 				</div>
 			</div>
 			<div className="bookshelf__recommendation">
@@ -147,7 +151,10 @@ export default function Bookshelf() {
 					))}
 				</div>
 			</div>
-			<button className="bookshelf__cart">
+			<button
+				className="bookshelf__cart"
+				onClick={() => setShowCart(!showCart)}
+			>
 				<IconShoppingCart size={26} color="currentColor" />
 				<div className="bookshelf__no-of-books">{cart.length}</div>
 			</button>
@@ -244,8 +251,16 @@ const Book = ({ book, unikey, cart, setCart }) => {
 const Cart = ({ cart }) => {
 	const totalPrice = cart.reduce((acc, book) => acc + book.price, 0)
 	return (
-		<div className="bookshelf__cart-page">
-			<h3>Your Cart</h3>
+		<motion.div
+			initial={{ opacity: 0, y: '20px' }}
+			animate={{ opacity: 1, y: '0' }}
+			exit={{ opacity: 0, y: '-20px' }}
+			className="bookshelf__cart-page"
+		>
+			<h2>Your Cart</h2>
+			<div className="bookshelf__cart-total">
+				Total Price: <b>₹{totalPrice}</b>
+			</div>
 			<div className="bookshelf__cart-items">
 				{cart.map((book) => (
 					<div className="bookshelf__cart-item" key={uuid4()}>
@@ -255,14 +270,13 @@ const Cart = ({ cart }) => {
 							alt={book.title}
 						/>
 						<div className="bookshelf__cart-item-info">
-							<h4 className="bookshelf__cart-item-title">{book.title}</h4>
-							<h5 className="bookshelf__cart-item-author">{book.author}</h5>
+							<h5 className="bookshelf__cart-item-title">{book.title}</h5>
+							<h6 className="bookshelf__cart-item-author">{book.author}</h6>
 						</div>
-						<div className="bookshelf__cart-item-price">₹{book.price}</div>
+						<h4 className="bookshelf__cart-item-price">₹{book.price}</h4>
 					</div>
 				))}
 			</div>
-			<div className="bookshelf__cart-total">Total: {totalPrice}</div>
-		</div>
+		</motion.div>
 	)
 }
