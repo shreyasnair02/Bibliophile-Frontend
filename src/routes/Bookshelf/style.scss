@@ -314,4 +314,64 @@
 			color: white;
 		}
 	}
+	&__recommendation-section {
+		// display: grid;
+		// grid-template-columns: repeat(2, 1fr);
+		// grid-template-rows: repeat(2, 1fr);
+		// grid-column-gap: 0px;
+		// grid-row-gap: 5px;
+		margin-top: 2ch;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: flex-start;
+		gap: 1ch;
+	}
+	&__recommendation-section > div {
+		height: 10rem;
+		max-width: fit-content;
+	}
+	&__filter-section {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		padding: 1rem;
+	}
+	&__filter-section > * {
+		display: flex;
+		flex-direction: row-reverse;
+		justify-content: flex-end;
+		gap: 0.6ch;
+	}
+	&__filter-section {
+		input[type='checkbox'] {
+			height: 23px;
+			width: 14px;
+		}
+	}
+	&__filter-section-clear {
+		display: flex;
+		// justify-content: center;
+	}
+	&__filter-section-clear > * {
+		display: flex;
+		justify-content: center;
+		font-size: small;
+		font-weight: 600;
+		text-transform: uppercase;
+		align-items: center;
+		border: 2px solid red;
+		background-color: rgb(248, 212, 212);
+		padding: 0.3rem;
+		border-radius: 70px;
+		gap: 0.5ch;
+		color: red;
+	}
+	&__filter-section-clear > *:hover {
+		background-color: rgb(248, 202, 202);
+		transition: all 0.2s ease-in-out;
+		// color: white;
+		svg {
+			color: white;
+		}
+	}
 }

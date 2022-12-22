@@ -27,7 +27,7 @@ export default function Bookshelf() {
 
 	const initialRender = useRef(0)
 	const [cart, setCart] = useState([])
-	const [showCart, setShowCart] = useState(true)
+	const [showCart, setShowCart] = useState(false)
 
 	const handleChange = (e) => {
 		const searchQuery = e.target.value.toLowerCase() || ''
