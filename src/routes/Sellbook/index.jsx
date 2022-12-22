@@ -54,7 +54,14 @@ export default function Sellbook() {
 							<button type="reset">
 								<IconRotate size={15}></IconRotate> Reset
 							</button>
-							<button type="submit">Submit</button>
+							<button
+								type="submit"
+								onClick={(e) => {
+									e.preventDefault()
+								}}
+							>
+								Submit
+							</button>
 						</div>
 					</form>
 				</div>
