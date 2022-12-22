@@ -26,6 +26,8 @@ export default function Bookshelf() {
 	})
 
 	const initialRender = useRef(0)
+	const [cart, setCart] = useState([])
+	const [showCart, setShowCart] = useState(false)
 
 	const handleChange = (e) => {
 		const searchQuery = e.target.value.toLowerCase() || ''
@@ -127,7 +129,7 @@ export default function Bookshelf() {
 				/>
 				<div className="bookshelf__books-section">
 					{books.map((book) => (
-						<Book book={book} key={uuid4()} />
+						<Book book={book} key={uuid4()} cart={cart} setCart={setCart} />
 					))}
 				</div>
 			</div>
@@ -147,13 +149,13 @@ export default function Bookshelf() {
 			</div>
 			<button className="bookshelf__cart">
 				<IconShoppingCart size={26} color="currentColor" />
-				<div className="bookshelf__no-of-books">3</div>
+				<div className="bookshelf__no-of-books">{cart.length}</div>
 			</button>
 		</PageWrapper>
 	)
 }
 
-const Book = ({ book, key }) => {
+const Book = ({ book, unikey, cart, setCart }) => {
 	const [showInfo, setShowInfo] = useState(false)
 	const [isMobile, setIsMobile] = useState(false)
 
@@ -176,7 +178,7 @@ const Book = ({ book, key }) => {
 
 	return (
 		<motion.div
-			key={key}
+			key={unikey}
 			initial={{ opacity: 0 }}
 			whileInView={{ opacity: 1 }}
 			viewport={{ once: true }}
@@ -199,7 +201,10 @@ const Book = ({ book, key }) => {
 						</div>
 						<h3 className="bookshelf__reduced-price">₹{book.price}</h3>
 					</div>
-					<button className="bookshelf__addtocart">
+					<button
+						className="bookshelf__addtocart"
+						onClick={() => setCart([...cart, book])}
+					>
 						<IconShoppingCartPlus size={20} color="currentColor" />
 					</button>
 				</div>
@@ -230,5 +235,31 @@ const Book = ({ book, key }) => {
 				)}
 			</AnimatePresence>
 		</motion.div>
+	)
+}
+
+const Cart = ({ cart }) => {
+	const totalPrice = 0
+	return (
+		<div className="bookshelf__cart">
+			<h3>Your Cart</h3>
+			<div className="bookshelf__cart-items">
+				{cart.map((book) => (
+					<div className="bookshelf__cart-item" key={uuid4()}>
+						<img
+							className="bookshelf__cart-item-cover"
+							src={book.url}
+							alt={book.title}
+						/>
+						<div className="bookshelf__cart-item-info">
+							<h4 className="bookshelf__cart-item-title">{book.title}</h4>
+							<h5 className="bookshelf__cart-item-author">{book.author}</h5>
+						</div>
+						<div className="bookshelf__cart-item-price">₹{book.price}</div>
+					</div>
+				))}
+			</div>
+			<div className="bookshelf__cart-total">Total: {totalPrice}</div>
+		</div>
 	)
 }
