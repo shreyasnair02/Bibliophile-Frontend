@@ -10,6 +10,7 @@ export const HomePage = () => {
 			<div className="home__container__sellbook">
 				<NavLink to="/bookshelf">
 					<button className="nav__btn nav__link nav__action purbtn">
+						<IconBuildingStore size={22} />
 						Get Started
 					</button>
 				</NavLink>
