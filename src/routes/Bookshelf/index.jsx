@@ -27,18 +27,6 @@ export default function Bookshelf() {
 
 	const initialRender = useRef(0)
 	const [cart, setCart] = useState([])
-	const [showCart, setShowCart] = useState(true)
-	const [recbooks, setRecbooks] = useState(() => {
-		const recBookz = books.filter((boo) => {
-			if (books[0].related.includes(boo.id)) {
-				return true
-			}
-		})
-		return recBookz
-	})
-
-	const initialRender = useRef(0)
-	const [cart, setCart] = useState([])
 	const [showCart, setShowCart] = useState(false)
 
 	const handleChange = (e) => {
@@ -142,7 +130,7 @@ export default function Bookshelf() {
 				<div className="bookshelf__books-section">
 					{books.length ? (
 						books.map((book) => (
-							<Book book={book} key={uuid4()} cart={cart} setCart={setCart} cart={cart} setCart={setCart} />
+							<Book book={book} key={uuid4()} cart={cart} setCart={setCart} />
 						))
 					) : (
 						<h2>No books found</h2>
