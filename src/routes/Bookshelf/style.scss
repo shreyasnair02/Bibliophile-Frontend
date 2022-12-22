@@ -212,6 +212,13 @@
 			display: none;
 		}
 	}
+
+	&__cart-page {
+		position: absolute;
+		background-color: hsl(var(--surface--200));
+		height: 60%;
+		width: 60%;
+	}
 	&__recommendation-section {
 		// display: grid;
 		// grid-template-columns: repeat(2, 1fr);

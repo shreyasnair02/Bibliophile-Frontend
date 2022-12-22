@@ -27,7 +27,7 @@ export default function Bookshelf() {
 
 	const initialRender = useRef(0)
 	const [cart, setCart] = useState([])
-	const [showCart, setShowCart] = useState(false)
+	const [showCart, setShowCart] = useState(true)
 
 	const handleChange = (e) => {
 		const searchQuery = e.target.value.toLowerCase() || ''
@@ -151,6 +151,9 @@ export default function Bookshelf() {
 				<IconShoppingCart size={26} color="currentColor" />
 				<div className="bookshelf__no-of-books">{cart.length}</div>
 			</button>
+			<AnimatePresence>
+				{showCart && <Cart cart={cart} setCart={setCart} />}
+			</AnimatePresence>
 		</PageWrapper>
 	)
 }
@@ -239,9 +242,9 @@ const Book = ({ book, unikey, cart, setCart }) => {
 }
 
 const Cart = ({ cart }) => {
-	const totalPrice = 0
+	const totalPrice = cart.reduce((acc, book) => acc + book.price, 0)
 	return (
-		<div className="bookshelf__cart">
+		<div className="bookshelf__cart-page">
 			<h3>Your Cart</h3>
 			<div className="bookshelf__cart-items">
 				{cart.map((book) => (
