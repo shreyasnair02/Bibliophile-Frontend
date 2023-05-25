@@ -1,10 +1,10 @@
 import {
-	IconBook,
 	IconBooks,
 	IconBuildingStore,
 	IconHome,
-	IconLogin
+	IconLogin,
 } from '@tabler/icons'
+import { BsBookHalf } from 'react-icons/bs'
 import { NavLink } from 'react-router-dom'
 import uuid4 from 'uuid4'
 import useAuth from '../../../hooks/useAuth'
@@ -20,7 +20,7 @@ const NavDesktop = () => {
 		start: {
 			className: 'nav__logo',
 			to: '/',
-			icon: <IconBook {...iconConfig} />,
+			icon: <BsBookHalf {...iconConfig} />,
 		},
 		middle: [
 			{ name: 'home', to: '/', icon: <IconHome {...iconConfig} /> },

@@ -24,12 +24,16 @@ const router = createBrowserRouter([
 			},
 			{
 				path: 'login',
-				element: <Login />
+				element: <Login />,
 			},
 			{
 				path: 'sellbook',
-				element: <Sellbook />
-			}
+				element: <Sellbook />,
+			},
+			{
+				// path: '/bookshelf/:id',
+				// element: <Book />,
+			},
 		],
 	},
 ])

@@ -3,8 +3,10 @@ import {
 	IconBooks,
 	IconBuildingStore,
 	IconHome,
-	IconLogin, IconMenu
+	IconLogin,
+	IconMenu,
 } from '@tabler/icons'
+import { BsBookHalf } from 'react-icons/bs'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
@@ -55,7 +57,7 @@ const NavMobile = () => {
 		<nav className="mobile-nav">
 			<div className="row">
 				<NavLink to="/" className="mobile-nav__logo">
-					<IconBook {...iconConfig} />
+					<BsBookHalf {...iconConfig} />
 				</NavLink>
 				<button
 					className="mobile-nav__menu"
@@ -75,7 +77,6 @@ const NavMobile = () => {
 }
 
 const NavList = ({ config }) => {
-
 	return (
 		<motion.div
 			initial={{ opacity: 0, y: '-20px' }}
@@ -87,7 +88,7 @@ const NavList = ({ config }) => {
 			{config.map(({ name, to, icon, className }, idx) => {
 				const classNames = `mobile-nav__item ${className ? className : ''}`
 				const [loggedIn] = useAuth()
-				if(name === 'login' && loggedIn) return null
+				if (name === 'login' && loggedIn) return null
 				return (
 					<NavLink
 						to={to}

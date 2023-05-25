@@ -1,5 +1,9 @@
 @use 'tokens/base' as *;
 
+html {
+	scroll-behavior: smooth;
+	overflow-y: hidden;
+}
 :where(#root) {
 	--nav-height: 66px;
 	display: grid;
@@ -15,10 +19,30 @@
 			grid-row-start: var(--row-start, auto);
 		}
 	}
+
+	overflow: hidden;
+}
+::selection {
+	background-color: #5b3401;
+	color: #fff6eb;
+}
+
+::-webkit-scrollbar {
+	width: 0.25rem;
+	height: 10px;
+}
+::-webkit-scrollbar-thumb {
+	// background-color: #a071a3;
+	border-radius: 1000vh;
+	transition: all 2s ease-in-out;
+}
+::-webkit-scrollbar-thumb {
+	background-color: #a071a3;
 }
 
 body {
 	font-family: 'Open Sans', system-ui, -apple-system, sans-serif;
+	// overflow: auto;
 }
 
 .page {
